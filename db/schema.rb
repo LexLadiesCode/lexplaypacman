@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304225545) do
+ActiveRecord::Schema.define(version: 20140309174335) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20140304225545) do
     t.string   "postal_code"
     t.decimal  "latitude",       precision: 10, scale: 6
     t.decimal  "longitude",      precision: 10, scale: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "players", force: true do |t|
+    t.string   "email"
+    t.string   "twitter"
+    t.string   "last_ip_address"
+    t.boolean  "is_banned"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
