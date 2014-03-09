@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :player_id %><br>
-    <%= f.text_field :player_id %>
+    <%= f.select :player_id, Player.all.map {|player| [player.email, player.id]} %>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.label :location_id %><br>
+    <%= f.select :location_id, Location.all.map {|location| [location.description, location.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>
