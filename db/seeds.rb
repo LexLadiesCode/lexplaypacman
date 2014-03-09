@@ -7,6 +7,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+def update_or_create_record model, key, data
+  value = data[key]
+  print "- #{value}"
+  query = {key => value}
+  record = model.where(query).first_or_initialize
+  record.assign_attributes(data)
+  is_new = record.new_record?
+  record.save!
+  if is_new
+    puts ' (created)'
+  else
+    puts ' (updated)'
+  end
+end
+
 puts 'Seeding locations'
 [
   {name: 'Arcadium', street_address: '574 N Limestone St', city: 'Lexington',
@@ -100,15 +115,14 @@ puts 'Seeding locations'
    phone: '(859) 368-9786', website: 'https://www.facebook.com/SplashEmOut',
    hours: 'Mon - Sun: 7:00 am - 11:00 pm'}
 ].each do |data|
-  name = data[:name]
-  print "- #{name}"
-  location = Location.where(name: name).first_or_initialize
-  location.assign_attributes(data)
-  is_new = location.new_record?
-  location.save!
-  if is_new
-    puts ' (created)'
-  else
-    puts ' (updated)'
-  end
+  update_or_create_record Location, :name, data
+end
+
+puts 'Seeding players'
+[
+  {email: 'cheshire137@gmail.com', twitter: 'cheshire137'},
+  {email: 'kristen.hanny@gmail.com'}
+].each do |data|
+  data[:is_banned] = false
+  update_or_create_record Player, :email, data
 end
