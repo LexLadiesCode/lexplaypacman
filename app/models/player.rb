@@ -1,4 +1,5 @@
 class Player < ActiveRecord::Base
+	has_many :standing
   before_save :clean_twitter
 
   private
