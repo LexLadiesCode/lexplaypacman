@@ -1,0 +1,33 @@
+<h1>Listing players</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Twitter</th>
+      <th>Last ip address</th>
+      <th>Is banned</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.email %></td>
+        <td><%= player.twitter %></td>
+        <td><%= player.last_ip_address %></td>
+        <td><%= player.is_banned %></td>
+        <td><%= link_to 'Show', player %></td>
+        <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player', new_player_path %>

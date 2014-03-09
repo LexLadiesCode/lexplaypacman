@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  twitter: MyString
+  last_ip_address: MyString
+  is_banned: false
+
+two:
+  email: MyString
+  twitter: MyString
+  last_ip_address: MyString
+  is_banned: false

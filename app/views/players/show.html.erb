@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @player.email %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @player.twitter %>
+</p>
+
+<p>
+  <strong>Last ip address:</strong>
+  <%= @player.last_ip_address %>
+</p>
+
+<p>
+  <strong>Is banned:</strong>
+  <%= @player.is_banned %>
+</p>
+
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Back', players_path %>
