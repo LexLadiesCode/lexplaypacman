@@ -18,8 +18,18 @@
       <tr>
         <td><%= standing.initials %></td>
         <td><%= standing.score %></td>
-        <td><%= standing.player %></td>
-        <td><%= standing.location %></td>
+        <td>
+          <% if player=standing.player %>
+            <%= player.email %>
+          <% end %>
+        </td>
+        <td>
+          <% if location=standing.location %>
+            <%= location.description %>
+          <% else %>
+            none
+          <% end %>
+        </td>
         <td><%= link_to 'Show', standing %></td>
         <td><%= link_to 'Edit', edit_standing_path(standing) %></td>
         <td><%= link_to 'Destroy', standing, method: :delete, data: { confirm: 'Are you sure?' } %></td>

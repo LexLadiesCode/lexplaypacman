@@ -10,15 +10,19 @@
   <%= @standing.score %>
 </p>
 
-<p>
-  <strong>Player:</strong>
-  <%= @standing.player %>
-</p>
+<% if player=@standing.player %>
+  <p>
+    <strong>Player:</strong>
+    <%= player.email %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Location:</strong>
-  <%= @standing.location %>
-</p>
+<% if location=@standing.location %>
+  <p>
+    <strong>Location:</strong>
+    <%= location.description %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_standing_path(@standing) %> |
 <%= link_to 'Back', standings_path %>
