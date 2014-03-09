@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Initials:</strong>
+  <%= @standing.initials %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @standing.score %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @standing.player %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @standing.location %>
+</p>
+
+<%= link_to 'Edit', edit_standing_path(@standing) %> |
+<%= link_to 'Back', standings_path %>

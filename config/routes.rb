@@ -1,4 +1,6 @@
 Lexplaypacman::Application.routes.draw do
+  resources :standings
+
   resources :players
   resources :locations
 

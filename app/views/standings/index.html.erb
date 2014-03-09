@@ -1,0 +1,33 @@
+<h1>Listing standings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Initials</th>
+      <th>Score</th>
+      <th>Player</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @standings.each do |standing| %>
+      <tr>
+        <td><%= standing.initials %></td>
+        <td><%= standing.score %></td>
+        <td><%= standing.player %></td>
+        <td><%= standing.location %></td>
+        <td><%= link_to 'Show', standing %></td>
+        <td><%= link_to 'Edit', edit_standing_path(standing) %></td>
+        <td><%= link_to 'Destroy', standing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Standing', new_standing_path %>
