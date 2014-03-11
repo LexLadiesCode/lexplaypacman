@@ -1,6 +1,8 @@
 class StandingsController < ApplicationController
   before_action :set_standing, only: [:show, :edit, :update, :destroy]
-
+  def top 
+  @standings = Standing.all.order("score DESC").limit(10)
+  end
   # GET /standings
   # GET /standings.json
   def index

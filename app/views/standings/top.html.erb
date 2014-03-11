@@ -1,0 +1,45 @@
+<%= link_to 'Add your score here!', new_standing_path, :class=> "btn btn-primary btn-lg" %>
+
+<h1>Top 10 High Scores</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Initials</th>
+      <th>Score</th>
+      <th>Player</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @standings.each do |standing| %>
+      <tr>
+        <td><%= standing.initials %></td>
+        <td><%= standing.score %></td>
+        <td>
+          <% if player=standing.player %>
+            <%= player.email %>
+          <% end %>
+        </td>
+        <td>
+          <% if location=standing.location %>
+            <%= location.description %>
+          <% else %>
+            none
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', standing %></td>
+        <td><%= link_to 'Edit', edit_standing_path(standing) %></td>
+        <td><%= link_to 'Destroy', standing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
