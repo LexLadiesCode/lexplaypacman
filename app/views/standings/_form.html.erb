@@ -1,33 +1,37 @@
-<%= form_for(@standing) do |f| %>
+<%= form_for(@standing, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
   <% if @standing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@standing.errors.count, "error") %> prohibited this standing from being saved:</h2>
+      <h2><%= pluralize(@standing.errors.count, "error") %> kept your high score from being saved:</h2>
 
       <ul>
-      <% @standing.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @standing.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :initials %><br>
-    <%= f.text_field :initials %>
+  <div class="form-group">
+    <%= f.label :initials, 'Your initials:', class: 'col-md-3 control-label' %>
+    <div class="col-md-9">
+      <%= f.text_field :initials, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :score %><br>
-    <%= f.number_field :score %>
+  <div class="form-group">
+    <%= f.label :score, 'Your score:', class: 'col-md-3 control-label' %>
+    <div class="col-md-9">
+      <%= f.number_field :score, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :player_id %><br>
-    <%= f.select :player_id, Player.all.map {|player| [player.email, player.id]} %>
+  <div class="form-group">
+    <%= f.label :location_id, 'Where did you play?', class: 'col-md-3 control-label' %>
+    <div class="col-md-9">
+      <%= f.select :location_id, Location.all.map {|location| [location.description, location.id]}, {}, {class: 'form-control'} %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.select :location_id, Location.all.map {|location| [location.description, location.id]} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-md-9 col-md-offset-3">
+      <%= f.submit 'Save High Score', class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
