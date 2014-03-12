@@ -1,4 +1,5 @@
 Lexplaypacman::Application.routes.draw do
+  get "about" => "pages#about"
   resources :standings
   resources :players
   resources :locations
