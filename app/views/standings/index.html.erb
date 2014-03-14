@@ -1,15 +1,13 @@
-<h1>Listing standings</h1>
+<h1>High Scores</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Initials</th>
       <th>Score</th>
-      <th>Player</th>
+      <th>Photo</th>
       <th>Location</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      
     </tr>
   </thead>
 
@@ -19,9 +17,7 @@
         <td><%= standing.initials %></td>
         <td><%= standing.score %></td>
         <td>
-          <% if player=standing.player %>
-            <%= player.email %>
-          <% end %>
+          <img src="http://www.refugezero.com/src/image/screens/pacman-screen1.jpg" width="100" height="100">
         </td>
         <td>
           <% if location=standing.location %>
@@ -30,9 +26,7 @@
             none
           <% end %>
         </td>
-        <td><%= link_to 'Show', standing %></td>
-        <td><%= link_to 'Edit', edit_standing_path(standing) %></td>
-        <td><%= link_to 'Destroy', standing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
       </tr>
     <% end %>
   </tbody>
