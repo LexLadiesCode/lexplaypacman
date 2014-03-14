@@ -1,6 +1,6 @@
 class StandingsController < ApplicationController
   before_action :set_standing, only: [:show, :edit, :update, :destroy]
-  def top 
+  def top
   @standings = Standing.all.order("score DESC").limit(10)
   end
   # GET /standings
@@ -71,6 +71,6 @@ class StandingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def standing_params
-      params.require(:standing).permit(:initials, :score, :player_id, :location)
+      params.require(:standing).permit(:initials, :score, :player_id, :location_id)
     end
 end
