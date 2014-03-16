@@ -1,13 +1,50 @@
-<ul>
+<html>
+<head>
+
+  <title><b>Locations</b></title>
+
+</head>
+
+<body>
+<a href="#" onclick="$('.collapse').each(function(index) {$(this).collapse('toggle');});"> Expand all</a>
+
+<div class="panel-group" id="accordion">
   <% @locations.each do |location| %>
-    <li>
-      <%= location.name %>
-      -
-      <%= location.city %>
-      <%= location.postal_code %>
-      <br>
-      (<%= location.latitude %>,
-      <%= location.longitude %>)
-    </li>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" 
+          href="#collapse<%= location.id %>">
+          <%= location.name %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%= location.id %>" class="panel-collapse collapse">
+      <div class="panel-body">
+              <a href= "<%= location.website %>"><%= location.website %>
+              </a>
+              
+              <p>
+              <%= location.street_address %> <%= location.city %>, KY <%= location.postal_code %>
+              </p>
+
+              <p>
+              <%= location.phone %>
+              </p>
+
+              <p>
+              <%= location.hours.to_s.html_safe %>
+              </p>
+
+              <p>
+              <%= location.kid_friendly %>
+      </div>
+    </div>
+  </div>
   <% end %>
-</ul>
+
+
+</body>
+
+
+</html>
