@@ -1,14 +1,16 @@
-<h1>High Scores</h1>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
-<%= link_to 'New Standing', new_standing_path %>
+<%= link_to 'Add your score here!', new_standing_path, :class=> "btn btn-primary btn-lg" %>
+
+<h1>Leaderboard</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Initials</th>
-      <th>Score</th>
-      <th>Photo</th>
-      <th>Location</th>
+      <th> <%= sortable "initials" %></th>
+      <th> <%= sortable "score" %></th>
+      <th> Photo </th>
+      <th> <%= sortable "location_id", "Location" %></th>
 
     </tr>
   </thead>
@@ -23,7 +25,7 @@
         </td>
         <td>
           <% if standing.location %>
-            <%= standing.location.name %>
+            <%= link_to standing.location.name, locations_path %>
           <% else %>
             none
           <% end %> 

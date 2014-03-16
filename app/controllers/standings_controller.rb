@@ -5,8 +5,9 @@ class StandingsController < ApplicationController
   end
   # GET /standings
   # GET /standings.json
+  helper_method :sort_column, :sort_direction
   def index
-    @standings = Standing.all
+    @standings = Standing.order(sort_column + " " + sort_direction)
   end
 
   # GET /standings/1
@@ -72,5 +73,13 @@ class StandingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def standing_params
       params.require(:standing).permit(:initials, :score, :player_id, :location_id)
+    end
+
+    def sort_column
+      Standing.column_names.include?(params[:sort]) ? params[:sort] :  "score"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
