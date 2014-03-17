@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309184258) do
+ActiveRecord::Schema.define(version: 20140317224859) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20140309184258) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "twitter"
   end
 
   add_index "standings", ["player_id"], name: "index_standings_on_player_id"

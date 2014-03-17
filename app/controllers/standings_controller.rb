@@ -72,7 +72,7 @@ class StandingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def standing_params
-      params.require(:standing).permit(:initials, :score, :player_id, :location_id)
+      params.require(:standing).permit(:initials, :score, :player_id, :location_id, :email, :twitter)
     end
 
     def sort_column
