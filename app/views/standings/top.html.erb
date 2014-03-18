@@ -31,7 +31,10 @@
                 </td>
                 <td>
                   <% if location=standing.location %>
-                    <i class="fa fa-map-marker" title="<%= location.name %>" data-toggle="tooltip"></i>
+                    <%# TODO: link to individual location page %>
+                    <%= link_to locations_path do %>
+                      <i class="fa fa-map-marker" title="<%= location.name %>" data-toggle="tooltip"></i>
+                    <% end %>
                   <% end %>
                 </td>
               </tr>
