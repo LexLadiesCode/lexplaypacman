@@ -7,7 +7,8 @@ class StandingsController < ApplicationController
   # GET /standings.json
   helper_method :sort_column, :sort_direction
   def index
-    @standings = Standing.order(sort_column + " " + sort_direction)
+    @standings = Standing.with_locations.
+                          order(sort_column + " " + sort_direction)
   end
 
   # GET /standings/1
