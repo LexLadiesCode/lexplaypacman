@@ -23,24 +23,27 @@
       <%= f.number_field :score, class: 'form-control' %>
     </div>
   </div>
+  <div class="form-group">
+    <%= f.label :location_id, 'Where did you play?', class: 'col-md-3 control-label' %>
+    <div class="col-md-9">
+      <%= f.select :location_id, Location.all.map {|location| [location.description, location.id]}, {}, {class: 'form-control'} %>
+    </div>
+  </div>
   <hr>
   <h4>Optional</h4>
   <div class="form-group">
     <%= f.label :email, 'Your email address:', class: 'col-md-3 control-label' %>
     <div class="col-md-9">
-      <%= f.text_field :email, class: 'form-control' %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'you@example.com' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :twitter, "Twitter:", class: 'col-md-3 control-label' %>
+    <%= f.label :twitter, class: 'col-md-3 control-label' do %>
+      <i class="fa fa-twitter"></i>
+      Twitter:
+    <% end %>
     <div class="col-md-9">
-      <%= f.text_field :twitter, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :location_id, 'Where did you play?', class: 'col-md-3 control-label' %>
-    <div class="col-md-9">
-      <%= f.select :location_id, Location.all.map {|location| [location.description, location.id]}, {}, {class: 'form-control'} %>
+      <%= f.text_field :twitter, class: 'form-control', placeholder: '@YourTwitterName' %>
     </div>
   </div>
   <div class="form-group">
