@@ -1,7 +1,12 @@
-
-<%= link_to 'Add your score here!', new_standing_path, :class=> "btn btn-primary btn-lg" %>
-
-<h1>Leaderboard</h1>
+<div class="page-header">
+  <h1 class="clearfix">
+    <%= link_to new_standing_path, class: 'pull-right' do %>
+      <i class="glyphicon glyphicon-plus"></i>
+      Submit Your Score
+    <% end %>
+    Leaderboard
+  </h1>
+</div>
 
 <table class="table table-striped">
   <thead>

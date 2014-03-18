@@ -1,3 +1,7 @@
+<div class="page-header">
+  <h1>Arcade Locations</h1>
+</div>
+
 <a href="#" onclick="$('.collapse').each(function(index) {$(this).collapse('toggle');});"> Expand all</a>
 
 <div class="panel-group" id="accordion">
@@ -5,7 +9,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" 
+        <a data-toggle="collapse" data-parent="#accordion"
         href="#collapse<%= location.id %>">
         <%= location.name %>
       </a>
@@ -15,7 +19,7 @@
     <div class="panel-body">
       <a href= "<%= location.website %>"><%= location.website %>
       </a>
-      
+
       <p>
         <%= location.street_address %> <%= location.city %>, KY <%= location.postal_code %>
       </p>

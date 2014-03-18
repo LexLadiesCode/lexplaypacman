@@ -1,34 +1,72 @@
-<table class="table table-striped standings-table">
-  <thead>
-    <tr>
-      <th>Rank</th>
-      <th class="text-center">Score</th>
-      <th class="text-right">Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @standings.each_with_index do |standing, index| %>
-      <tr class="standing-row row-<%= index + 1 %>">
-        <td>
-          <%= link_to (index + 1).ordinalize, standing %>
-        </td>
-        <td class="text-center">
-          <%= link_to standing.score, standing %>
-        </td>
-        <td class="text-right">
-          <%= link_to standing.initials, standing %>
-        </td>
-        <td>
-          <% if location=standing.location %>
-            <i class="fa fa-map-marker" title="<%= location.name %>" data-toggle="tooltip"></i>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h2>Find a Pac-Man or Ms. Pac-Man machine in Lexington here:</h2>
-<h3>[INSERT MAP HERE]</h3>
-<%= link_to 'View all locations', locations_path %>
+<div class="row">
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          High Scores
+        </h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped standings-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th class="text-center">Score</th>
+              <th class="text-right">Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @standings.each_with_index do |standing, index| %>
+              <tr class="standing-row row-<%= index + 1 %>">
+                <td>
+                  <%= link_to (index + 1).ordinalize, standing %>
+                </td>
+                <td class="text-center">
+                  <%= link_to standing.score, standing %>
+                </td>
+                <td class="text-right">
+                  <%= link_to standing.initials, standing %>
+                </td>
+                <td>
+                  <% if location=standing.location %>
+                    <i class="fa fa-map-marker" title="<%= location.name %>" data-toggle="tooltip"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-xs-6 text-left">
+            <%= link_to 'Submit your score', new_standing_path %>
+          </div>
+          <div class="col-xs-6 text-right">
+            <%= link_to standings_path do %>
+              View all scores &rarr;
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          Where to Play
+        </h2>
+      </div>
+      <div class="panel-body">
+        <p>[INSERT MAP HERE]</p>
+      </div>
+      <div class="panel-footer">
+        <%= link_to locations_path do %>
+          View all arcade locations &rarr;
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
