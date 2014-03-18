@@ -75,11 +75,22 @@ class StandingsController < ApplicationController
       params.require(:standing).permit(:initials, :score, :player_id, :location_id, :email, :twitter)
     end
 
-    def sort_column
-      Standing.column_names.include?(params[:sort]) ? params[:sort] :  "score"
+    def sort_column 
+      if Standing.column_names.include?(params[:sort])
+        params[:sort]
+      else
+        'score'
+      end
+      # Standing.column_names.include?(params[:sort]) ? params[:sort] :  "score"
     end
 
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      # ['asc', 'desc']
+      if %w[asc desc].include?(params[:direction])
+        params[:direction]
+      else
+        'asc'
+      end
+      # %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
