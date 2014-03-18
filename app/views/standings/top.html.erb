@@ -1,7 +1,7 @@
-<%= link_to 'Add your score here!', new_standing_path, :class=> "btn btn-primary btn-lg" %>
-
+<%= link_to 'Add your score here!', new_standing_path, class: "btn btn-primary btn-lg" %>
+<br>
+<br>
 <h1>Top 10 High Scores</h1>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -34,12 +34,23 @@
         </td>
         <td><%= link_to 'Show', standing %></td>
         <td><%= link_to 'Edit', edit_standing_path(standing) %></td>
-        <td><%= link_to 'Destroy', standing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', standings_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= link_to 'View all scores', standings_path %>
 <br>
+<br>
+<h2>Do you want to play too?
+<br>Find a Pac-Man or Ms. Pac-Man machine in Lexington here:</h2>
+<h3>[INSERT MAP HERE]</h3>
+<%= link_to 'View all locations', locations_path %>
+
+<br>
+<br>
+<br>
+<%= link_to 'About', about_path, class: "btn btn-primary btn-lg" %>
 
 
