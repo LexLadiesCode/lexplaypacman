@@ -1,28 +1,54 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Initials:</strong>
-  <%= @standing.initials %>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @standing.score %>
-</p>
-
-<% if player=@standing.player %>
-  <p>
-    <strong>Player:</strong>
-    <%= player.email %>
-  </p>
-<% end %>
-
-<% if location=@standing.location %>
-  <p>
-    <strong>Location:</strong>
-    <%= location.description %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_standing_path(@standing) %> |
-<%= link_to 'Back', standings_path %>
+<div class="row">
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          High Score
+        </h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped standings-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th class="text-center">Score</th>
+              <th class="text-right">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @standing.rank.ordinalize %></td>
+              <td class="text-center"><%= @standing.score %></td>
+              <td class="text-right"><%= @standing.initials %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          Additional Info
+        </h2>
+      </div>
+      <div class="panel-body">
+        <% if location=@standing.location %>
+          <p>
+            <i class="fa fa-map-marker"></i>
+            <strong><%= location.name %></strong><br>
+            <%= location.street_address %><br>
+            <%= location.city %>, <%= location.state %>
+            <%= location.postal_code %>
+          </p>
+        <% end %>
+        <p>
+          Score was submitted on
+          <%= @standing.created_at.to_formatted_s(:date) %>
+          at <%= @standing.created_at.to_formatted_s(:time) %>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

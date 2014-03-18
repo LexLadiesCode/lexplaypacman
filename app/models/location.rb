@@ -3,6 +3,6 @@ class Location < ActiveRecord::Base
   has_many :standings
 
   def description
-  	"#{name} - #{street_address}, #{city}"
+  	"#{name} - #{street_address}, #{city} #{state} #{postal_code}"
   end
 end

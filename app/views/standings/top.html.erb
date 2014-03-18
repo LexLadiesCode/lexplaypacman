@@ -3,6 +3,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title">
+          <i class="fa fa-trophy"></i>
           High Scores
         </h2>
       </div>
@@ -20,7 +21,7 @@
             <% @standings.each_with_index do |standing, index| %>
               <tr class="standing-row row-<%= index + 1 %>">
                 <td>
-                  <%= link_to (index + 1).ordinalize, standing %>
+                  <%= link_to standing.rank.ordinalize, standing %>
                 </td>
                 <td class="text-center">
                   <%= link_to standing.score, standing %>
@@ -41,11 +42,15 @@
       <div class="panel-footer">
         <div class="row">
           <div class="col-xs-6 text-left">
-            <%= link_to 'Submit your score', new_standing_path %>
+            <%= link_to new_standing_path do %>
+              <i class="glyphicon glyphicon-plus"></i>
+              Submit your score
+            <% end %>
           </div>
           <div class="col-xs-6 text-right">
             <%= link_to standings_path do %>
-              View all scores &rarr;
+              <i class="fa fa-align-justify"></i>
+              View all scores
             <% end %>
           </div>
         </div>
@@ -56,6 +61,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title">
+          <i class="fa fa-map-marker"></i>
           Where to Play
         </h2>
       </div>
@@ -64,7 +70,8 @@
       </div>
       <div class="panel-footer">
         <%= link_to locations_path do %>
-          View all arcade locations &rarr;
+          <i class="fa fa-globe"></i>
+          View all arcade locations
         <% end %>
       </div>
     </div>
