@@ -72,11 +72,19 @@
         <p><iframe src="https://mapsengine.google.com/map/embed?mid=z8Dq9FBB-LQ4.kiumuL065mOE" width="583" height="436" ></iframe></p>
       </div>
       <div class="panel-footer">
-        <%= link_to locations_path do %>
-          <i class="fa fa-globe"></i>
-          View all arcade locations
-        <% end %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="col-xs-6 text-left">
+            <%= link_to locations_path do %>
+              <i class="fa fa-globe"></i>
+              View all arcade locations
+            <% end %>
+          </div>
+          <div class="col-xs-6 text-right">
+            <%= mail_to "ewarner@lexpublib.org", subject: "You're missing a Pac-Man or Ms. Pac-Man machine!" do %>
+              <i class="glyphicon glyphicon-question-sign"></i>
+              Are we missing a machine? Let us know!
+            <% end %>
+          </div>
+        </div>
   </div>
 </div>
