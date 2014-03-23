@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
 	has_many :standing
   before_save :clean_twitter
+  accepts_nested_attributes_for :standing
 
   private
 

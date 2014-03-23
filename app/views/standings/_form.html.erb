@@ -31,21 +31,25 @@
   </div>
   <hr>
   <h4>Optional</h4>
-  <div class="form-group">
-    <%= f.label :email, 'Your email address:', class: 'col-md-3 control-label' %>
-    <div class="col-md-9">
-      <%= f.text_field :email, class: 'form-control', placeholder: 'you@example.com' %>
+  <%= f.fields_for :email do |ff| %>
+    <div class="form-group">
+      <%= ff.label :email, 'Your email address:', class: 'col-md-3 control-label' %>
+      <div class="col-md-9">
+        <%= ff.text_field :email, class: 'form-control', placeholder: 'you@example.com' %>
+      </div>
     </div>
-  </div>
+  <% end %>
+  <%= f.fields_for :twitter do |ff| %>
   <div class="form-group">
-    <%= f.label :twitter, class: 'col-md-3 control-label' do %>
+    <%= ff.label :twitter, class: 'col-md-3 control-label' do %>
       <i class="fa fa-twitter"></i>
       Twitter:
     <% end %>
     <div class="col-md-9">
-      <%= f.text_field :twitter, class: 'form-control', placeholder: '@YourTwitterName' %>
+      <%= ff.text_field :twitter, class: 'form-control', placeholder: '@YourTwitterName' %>
     </div>
   </div>
+  <% end %>
   <div class="form-group">
     <div class="col-md-9 col-md-offset-3">
       <%= f.submit 'Save High Score', class: 'btn btn-primary' %>
