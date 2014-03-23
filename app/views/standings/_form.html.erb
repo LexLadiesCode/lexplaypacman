@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :initials, 'Your initials:', class: 'col-md-3 control-label' %>
+    <%= f.label :initials, 'Your initials: (required)', class: 'col-md-3 control-label' %>
     <div class="col-md-9">
       <%= f.text_field :initials, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :score, 'Your score:', class: 'col-md-3 control-label' %>
+    <%= f.label :score, 'Your score: (required)', class: 'col-md-3 control-label' %>
     <div class="col-md-9">
       <%= f.number_field :score, class: 'form-control' %>
     </div>

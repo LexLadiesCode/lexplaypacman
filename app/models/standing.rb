@@ -1,7 +1,12 @@
 class Standing < ActiveRecord::Base
   belongs_to :location
   belongs_to :player
-  accepts_nested_attributes_for :player
+
+  validates_presence_of :initials
+  validates_length_of :initials, :maximum=>3, :message=>" are limited to 3 characters!"
+  validates_exclusion_of :initials, :in => %w( ass cok coq dik fag fuc fuk fuq tit ), :message => "cannot be rude words"
+  validates_presence_of :score
+  validates_numericality_of :score, :less_than_or_equal_to=>3333360
 
   scope :with_locations, ->{ joins('LEFT OUTER JOIN locations ' +
                                    'ON locations.id=standings.location_id') }
