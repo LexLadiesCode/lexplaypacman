@@ -28,6 +28,7 @@ class StandingsController < ApplicationController
   # GET /standings/new
   def new
     @standing = Standing.new
+    @standing.build_player
   end
 
   # GET /standings/1/edit
@@ -38,13 +39,15 @@ class StandingsController < ApplicationController
   # POST /standings.json
   def create
     @standing = Standing.new(standing_params)
-
     respond_to do |format|
       if @standing.save
         format.html { redirect_to @standing, notice: 'Standing was successfully created.' }
         format.json { render action: 'show', status: :created, location: @standing }
       else
-        format.html { render action: 'new' }
+        format.html { 
+          @standing.build_player unless @standing.player
+          render action: 'new' 
+        }
         format.json { render json: @standing.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +85,8 @@ class StandingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def standing_params
-      params.require(:standing).permit(:initials, :score, :player_id, :location_id, :email, :twitter)
+      params.require(:standing).permit(:initials, :score, :location_id, 
+                                       player_attributes: [:email, :twitter])
     end
 
     def sort_location

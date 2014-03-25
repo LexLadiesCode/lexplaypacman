@@ -19,7 +19,15 @@
             <tr>
               <td><%= @standing.rank.ordinalize %></td>
               <td class="text-center"><%= @standing.score %></td>
-              <td class="text-right"><%= @standing.initials %></td>
+              <td class="text-right">
+                <% if @standing.player && @standing.player.twitter.present? %>
+                  <%= link_to @standing.player.twitter_url do %>
+                    <i class="fa fa-twitter"></i><%= @standing.initials %>
+                  <% end %>
+                <% else %>
+                  <%= @standing.initials %>
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>
