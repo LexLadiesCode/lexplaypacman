@@ -1,3 +1,4 @@
+<% Time.zone = 'Eastern Time (US & Canada)' %>
 <div class="page-header">
   <h1 class="clearfix">
     <%= link_to new_standing_path, class: 'pull-right' do %>
@@ -7,6 +8,12 @@
     Leaderboard
   </h1>
 </div>
+
+<p>List by: 
+  <%= time "All time", 100.years.ago %> |
+  <%= time "Week", 7.days.ago %> |
+  <%= time "Today", 0.days.ago %>
+</p>
 
 <table class="table table-striped">
   <thead>
@@ -34,7 +41,6 @@
             none
           <% end %>
         </td>
-
       </tr>
     <% end %>
   </tbody>

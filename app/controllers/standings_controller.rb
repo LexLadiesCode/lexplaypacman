@@ -5,10 +5,19 @@ class StandingsController < ApplicationController
   end
   # GET /standings
   # GET /standings.json
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :sort_time
   def index
-    @standings = Standing.with_locations.
-                          order(sort_column + " " + sort_direction)
+    if sort_column == 'initials'
+      @standings = Standing.with_locations.
+                          order("lower(initials) " + sort_direction).where('standings.created_at > ?', sort_time)
+    elsif sort_column == 'location_id'
+      @standings = Standing.with_locations.
+                          order("locations.name " + sort_direction).where('standings.created_at > ?', sort_time)
+    else
+      @standings = Standing.with_locations.
+                          order(sort_column + " " + sort_direction).where('standings.created_at > ?', sort_time)
+    end
+ 
   end
 
   # GET /standings/1
@@ -76,6 +85,14 @@ class StandingsController < ApplicationController
       params.require(:standing).permit(:initials, :score, :player_id, :location_id, :email, :twitter)
     end
 
+    def sort_location
+      if Location.column_names.include?(params[:sort])
+        params[:sort]
+      else
+        'name'
+      end
+    end
+
     def sort_column 
       if Standing.column_names.include?(params[:sort])
         params[:sort]
@@ -90,8 +107,17 @@ class StandingsController < ApplicationController
       if %w[asc desc].include?(params[:direction])
         params[:direction]
       else
-        'asc'
+        'desc'
       end
       # %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def sort_time
+      if params[:time] == nil
+        100.years.ago
+      else
+        params[:time]
+      end
+#      %w[1000.days.ago 7.days.ago 0.days.ago].include?(params[:time]) ? params[:time] : 7.days.ago
     end
 end
