@@ -6,6 +6,7 @@
 
 <div class="panel-group" id="accordion">
   <% @locations.each do |location| %>
+  <a id="<%= location.slug %>"></a>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -15,7 +16,7 @@
       </a>
     </h4>
   </div>
-  <div id="collapse<%= location.id %>" class="panel-collapse collapse">
+  <div  id="collapse<%= location.id %>" class="panel-collapse collapse">
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-6">
@@ -51,3 +52,4 @@
     </div>
   </div>
   <% end %>
+ 
