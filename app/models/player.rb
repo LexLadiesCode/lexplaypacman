@@ -1,7 +1,10 @@
 class Player < ActiveRecord::Base
-	has_many :standing
+  has_many :standings
   before_save :clean_twitter
-  accepts_nested_attributes_for :standing
+
+  def twitter_url
+    "http://twitter.com/#{twitter}"
+  end
 
   private
 
