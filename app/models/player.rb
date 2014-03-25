@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   before_save :clean_twitter
   validates :email, uniqueness: true, allow_blank: true
   validate :email_has_at_sign
+  validate :has_some_data
 
   def twitter_url
     "http://twitter.com/#{twitter}"
@@ -20,6 +21,12 @@ class Player < ActiveRecord::Base
     return unless email.present?
     unless email =~ /@/
       errors.add(:email, 'does not include @')
+    end
+  end
+
+  def has_some_data
+    if email.blank? && twitter.blank?
+      errors.add(:base, 'Either Twitter or email address must be given')
     end
   end
 end

@@ -22,12 +22,13 @@ class Standing < ActiveRecord::Base
 
   # Look up Player by email address, or create a new Player.
   def player_attributes= data
-    self.player = Player.where(email: data[:email]).first_or_initialize
-    if (twitter=data[:twitter]).present?
-      self.player.twitter = data[:twitter]
+    email = data['email']
+    twitter = data['twitter']
+    if email.present? || twitter.present?
+      self.player = Player.where(email: email).first_or_initialize
+      self.player.twitter = twitter if twitter.present?
+      self.player.save
     end
-    self.player.save
-    self.player
   end
 
   private
