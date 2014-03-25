@@ -6,17 +6,16 @@
 
 <div class="panel-group" id="accordion">
   <% @locations.each do |location| %>
-  <a id="<%= location.slug %>"></a>
-  <div class="panel panel-default">
+    <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion"
-        href="#collapse<%= location.id %>">
+        href="#<%= location.slug %>">
         <%= location.name %>
       </a>
     </h4>
   </div>
-  <div  id="collapse<%= location.id %>" class="panel-collapse collapse">
+  <div  id="<%= location.slug %>" class="panel-collapse collapse">
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-6">
@@ -53,3 +52,14 @@
   </div>
   <% end %>
  
+ <script type="text/JavaScript"> 
+    $(document).ready(function() {
+      var pathname = window.location.pathname;
+      var  index = pathname.indexOf("#");
+      var end = pathname.length-1;
+      if (index > 0 && index != end) {
+        var slug = pathname.substring(index, end);
+        $(slug).collapse("open");
+      };
+    });
+    </script>
