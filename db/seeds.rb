@@ -33,7 +33,7 @@ puts 'Seeding locations'
   {name: 'Gattitown', street_address: '2524 Nicholasville Road',
    city: 'Lexington', state: 'Kentucky', postal_code: '40503',
    latitude: 38.00151133, longitude: -84.52004107, phone: '(859) 277-2323',
-   website: 'http://www.gattitownlexington.com/', kid_friendly: true, 
+   website: 'http://www.gattitownlexington.com/', kid_friendly: true,
    hours: 'Sunday - Thursday: 11am – 9pm <br> Friday & Saturday 11am – 10pm'},
   {name: 'Tolly Ho', street_address: '606 South Broadway Road',
    city: 'Lexington', state: 'Kentucky', postal_code: '40508',
@@ -46,11 +46,11 @@ puts 'Seeding locations'
    kid_friendly: true },
   {name: "Charlie Brown's", street_address: '816 E Euclid Ave',
    city: 'Lexington', state: 'Kentucky', postal_code: '40502',
-   latitude: 38.02986126 -84.49091667, phone: '(859) 269-5701',
+   latitude: 38.02986126, longitude: -84.49091667, phone: '(859) 269-5701',
    website: 'http://www.charliebrownslex.com/', kid_friendly: true, hours: 'Monday - Thursday: 11:00 am - 1:00 am <br> Friday & Saturday: 11:00am - 2:00am <br> Sunday: 12:00pm to 12:00am'},
   {name: 'Commonwealth Coin Laundry', street_address: '1503 Russell Cave Road',
    city: 'Lexington', state: 'Kentucky', postal_code: '40505',
-   latitude: 38.07209747 -84.47553659, phone: '(859) 293-1415',
+   latitude: 38.07209747, longitude: -84.47553659, phone: '(859) 293-1415',
    website: 'http://www.commonwealthlaundromat.com/', kid_friendly: true,
    hours: '7 Days A Week: 7:00am-11:00pm'},
   {name: 'Cinemark Woodhill Movies 10', street_address: '425 Codell Drive',
@@ -83,7 +83,7 @@ puts 'Seeding locations'
    hours: 'Sunday: 12:00pm - 10:00pm <br> Monday - Saturday: 11:00am - 10:00pm,'},
   {name: 'Lexington Ice Center', street_address: '560 Eureka Springs Drive',
    city: 'Lexington', state: 'Kentucky', postal_code: '40517',
-   latitude: 37.99758136, longitude: -84.45735525, phone: '(859) 269-5681', kid_friendly: true, 
+   latitude: 37.99758136, longitude: -84.45735525, phone: '(859) 269-5681', kid_friendly: true,
    website: 'http://www.lexingtonicecenter.com'},
   {name: "Malibu Jack's Family FunCenter",
    street_address: '3025 Blake James Drive', city: 'Lexington',
@@ -107,7 +107,15 @@ puts 'Seeding locations'
    street_address: '3120 Pimlico Parkway', city: 'Lexington', state: 'Kentucky',
    postal_code: '40517', latitude: 37.9860997, longitude: -84.46067397, kid_friendly: true,
    phone: '(859) 368-9786', website: 'https://www.facebook.com/SplashEmOut',
-   hours: 'Monday - Sunday: 7:00am - 11:00pm'}
+   hours: 'Monday - Sunday: 7:00am - 11:00pm'},
+   {name: 'Lexington Public Library - Central Library',
+    street_address: '140 E Main Street', city: 'Lexington', state: 'Kentucky',
+    postal_code: '40507', latitude: 38.045041, longitude: -84.496359, kid_friendly: true,
+    phone: '(859) 231-5500', website: 'https://www.lexpublib.org',
+    hours: 'Monday - Thursday: 9:00am - 9:00pm <br>
+            Friday: 9:00am - 6:00pm <br>
+            Saturday: 9:00am - 5:00pm <br>
+            Sunday: 1:00pm - 5:00pm'  }
    ].each do |data|
   update_or_create_record Location, :name, data
 end

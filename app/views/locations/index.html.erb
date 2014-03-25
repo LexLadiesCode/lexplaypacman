@@ -17,25 +17,37 @@
   </div>
   <div id="collapse<%= location.id %>" class="panel-collapse collapse">
     <div class="panel-body">
-      <a href= "<%= location.website %>"><%= location.website %>
-      </a>
+      <div class="row">
+        <div class="col-sm-6">
+          <a href= "<%= location.website %>"><%= location.website %></a>
 
-      <p>
-        <%= location.street_address %> <%= location.city %>, KY <%= location.postal_code %>
-      </p>
+          <p>
+            <%= location.street_address %>
+            <br>
+            <%= location.city %>, <%= location.state %> <%= location.postal_code %>
+          </p>
 
-      <p>
-        <%= location.phone %>
-      </p>
+          <p>
+            <%= location.phone %>
+          </p>
 
-      <p>
-        <%= location.hours.to_s.html_safe %>
-      </p>
+          <p>
+            <%= location.hours.to_s.html_safe %>
+          </p>
 
-      <p>
-        <%= location.kid_friendly %>
+          <p>
+            <% if location.kid_friendly %>
+            Kid-friendly!
+            <% else %>
+            Not kid-friendly - must be 21+
+            <% end %>
+          </p>
+        </div>
+        <div class="col-sm-6">
+        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= location.latitude %>,<%= location.longitude %>&markers=color:red|<%= location.latitude %>,<%= location.longitude %>&zoom=15&size=250x250&sensor=false&key=AIzaSyDIxX5aWsdZyTsowPE-iD7HqwQ3LjeX3OQ">
+        </div>
       </div>
+    </div>
     </div>
   </div>
   <% end %>
-
