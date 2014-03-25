@@ -20,6 +20,16 @@ class Standing < ActiveRecord::Base
     Standing.order('score DESC').pluck(:id).index(id) + 1
   end
 
+  # Look up Player by email address, or create a new Player.
+  def player_attributes= data
+    self.player = Player.where(email: data[:email]).first_or_initialize
+    if (twitter=data[:twitter]).present?
+      self.player.twitter = data[:twitter]
+    end
+    self.player.save
+    self.player
+  end
+
   private
 
   def capitalize_initials
