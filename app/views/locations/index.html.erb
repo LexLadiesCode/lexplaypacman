@@ -44,7 +44,9 @@
           </p>
         </div>
         <div class="col-sm-6">
-        <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= location.latitude %>,<%= location.longitude %>&markers=color:red|<%= location.latitude %>,<%= location.longitude %>&zoom=15&size=250x250&sensor=false&key=AIzaSyDIxX5aWsdZyTsowPE-iD7HqwQ3LjeX3OQ">
+        <a href="https://maps.google.com/maps?z=15&q=<%= location.latitude %>+<%= location.longitude %>">
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= location.latitude %>,<%= location.longitude %>&markers=color:red|<%= location.latitude %>,<%= location.longitude %>&zoom=15&size=250x250&sensor=false&key=AIzaSyDIxX5aWsdZyTsowPE-iD7HqwQ3LjeX3OQ">
+        </a>
         </div>
       </div>
     </div>
