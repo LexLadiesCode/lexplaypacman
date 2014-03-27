@@ -7,4 +7,7 @@ index = pathname.indexOf("#")
 end = pathname.length
 if index > 0 and index != end
   slug = pathname.substring(index, end)
-  $(slug).collapse()
+  $(slug).collapse('show')
+  $('html, body').animate({
+        scrollTop: $(slug).offset().top - 100
+    }, 500)
