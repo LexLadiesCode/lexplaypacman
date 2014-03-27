@@ -9,7 +9,7 @@
   </h1>
 </div>
 
-<p>List by: 
+<p>List by:
   <%= time "All time", 100.years.ago %> |
   <%= time "Week", 7.days.ago %> |
   <%= time "Today", 0.days.ago %>
@@ -36,7 +36,7 @@
         </td>
         <td>
           <% if standing.location %>
-            <%= link_to standing.location.name, locations_path %>
+            <%= link_to standing.location.name, locations_path(:anchor => standing.location.slug) %>
           <% else %>
             none
           <% end %>
