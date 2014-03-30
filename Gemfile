@@ -33,11 +33,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem "imgurruby", "~> 0.0.3"
-#gem "imgurruby", path: "/Users/eliriveire/code/imgur-ruby"
-
-#gem 'flickraw', '~> 0.9.7'
-
 gem "flickr-objects"
 
 # Use ActiveModel has_secure_password
