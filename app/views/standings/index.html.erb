@@ -29,13 +29,10 @@
   <tbody>
     <% @standings.each do |standing| %>
       <tr>
-        <td><%= standing.initials %></td>
+        <td><%= link_to standing.initials, standing_path(standing) %></td>
         <td><%= standing.score %></td>
         <td>
-          <% @photos.each do |photo| %>
-            <%= image_tag photo.source_url, width: '100px', height: '100px' %>
-          <% end %>
-          <%#= image_tag standing.image_URL, width: '100px', height: '100px'%>
+          <%= image_tag standing.image_URL, height: '100px' %>
         </td>
         <td>
           <% if standing.location %>

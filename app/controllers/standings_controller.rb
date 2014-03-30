@@ -39,9 +39,10 @@ class StandingsController < ApplicationController
   # POST /standings.json
   def create
     @standing = Standing.new(standing_params)
-    # @image = Imgurruby::Imgur.new('4cd0e03b000be61')
-    # @image.upload(params[:standing][:file])
-    # @standing.image_URL = @image.url
+    photo_id = Flickr.upload(params[:standing][:file], title: @standing.initials)
+    photo = Flickr.photos.find(photo_id).get_info!
+    photo.get_sizes!
+    @standing.image_URL = photo.largest.source_url
     respond_to do |format|
       if @standing.save
         format.html { redirect_to @standing, notice: 'Standing was successfully created.' }

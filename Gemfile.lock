@@ -46,7 +46,6 @@ GEM
       faraday_middleware (>= 0.8)
       multi_xml (~> 0.4)
       simple_oauth (~> 0.1)
-    flickraw (0.9.7)
     hike (1.2.3)
     i18n (0.6.9)
     imgurruby (0.0.3)
@@ -126,7 +125,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   flickr-objects
-  flickraw (~> 0.9.7)
   imgurruby (~> 0.0.3)
   jbuilder (~> 1.2)
   jquery-rails
