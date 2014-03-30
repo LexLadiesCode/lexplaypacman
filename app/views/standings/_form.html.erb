@@ -12,6 +12,12 @@
       <% end %>
 
       <div class="form-group">
+        <%= f.label :image_URL, 'Upload your high score photo:', class: 'col-md-4 control-label' %>
+        <div class="col-md-8">
+          <%= f.file_field :file, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
         <%= f.label :initials, 'Your initials:', class: 'col-md-4 control-label' %>
         <div class="col-md-8">
           <%= f.text_field :initials, maxlength: 3, class: 'form-control' %>
