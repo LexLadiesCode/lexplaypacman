@@ -34,13 +34,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-<<<<<<< HEAD
 group :production, :staging do
   gem 'rails_12factor'
 end
 
-=======
->>>>>>> master
 gem "flickr-objects"
 
 # Use ActiveModel has_secure_password
