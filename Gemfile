@@ -33,6 +33,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#gem "imgurruby", "~> 0.0.3"
+gem "imgurruby", path: "/Users/eliriveire/code/imgur-ruby"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

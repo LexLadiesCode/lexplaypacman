@@ -17,7 +17,7 @@ class StandingsController < ApplicationController
       @standings = Standing.with_locations.
                           order(sort_column + " " + sort_direction).where('standings.created_at > ?', sort_time)
     end
- 
+
   end
 
   # GET /standings/1
@@ -39,14 +39,17 @@ class StandingsController < ApplicationController
   # POST /standings.json
   def create
     @standing = Standing.new(standing_params)
+    # @image = Imgurruby::Imgur.new('4cd0e03b000be61')
+    # @image.upload(params[:standing][:file])
+    # @standing.image_URL = @image.url
     respond_to do |format|
       if @standing.save
         format.html { redirect_to @standing, notice: 'Standing was successfully created.' }
         format.json { render action: 'show', status: :created, location: @standing }
       else
-        format.html { 
+        format.html {
           @standing.build_player unless @standing.player
-          render action: 'new' 
+          render action: 'new'
         }
         format.json { render json: @standing.errors, status: :unprocessable_entity }
       end
@@ -85,7 +88,7 @@ class StandingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def standing_params
-      params.require(:standing).permit(:initials, :score, :location_id, 
+      params.require(:standing).permit(:initials, :score, :location_id,
                                        player_attributes: [:email, :twitter])
     end
 
@@ -97,7 +100,7 @@ class StandingsController < ApplicationController
       end
     end
 
-    def sort_column 
+    def sort_column
       if Standing.column_names.include?(params[:sort])
         params[:sort]
       else

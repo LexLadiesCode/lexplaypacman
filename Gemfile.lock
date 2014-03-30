@@ -1,3 +1,8 @@
+PATH
+  remote: /Users/eliriveire/code/imgur-ruby
+  specs:
+    imgurruby (1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -111,6 +116,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  imgurruby!
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.3)

@@ -32,7 +32,7 @@
         <td><%= standing.initials %></td>
         <td><%= standing.score %></td>
         <td>
-          <img src="http://www.refugezero.com/src/image/screens/pacman-screen1.jpg" width="100" height="100">
+          <%= image_tag standing.image_URL, width: '100px', height: '100px'%>
         </td>
         <td>
           <% if standing.location %>
