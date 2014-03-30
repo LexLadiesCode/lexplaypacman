@@ -38,6 +38,8 @@ gem "imgurruby", "~> 0.0.3"
 
 gem 'flickraw', '~> 0.9.7'
 
+gem "flickr-objects"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

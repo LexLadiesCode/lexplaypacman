@@ -32,7 +32,10 @@
         <td><%= standing.initials %></td>
         <td><%= standing.score %></td>
         <td>
-          <%= image_tag standing.image_URL, width: '100px', height: '100px'%>
+          <% @photos.each do |photo| %>
+            <%= image_tag photo.source_url, width: '100px', height: '100px' %>
+          <% end %>
+          <%#= image_tag standing.image_URL, width: '100px', height: '100px'%>
         </td>
         <td>
           <% if standing.location %>
