@@ -41,3 +41,11 @@
 .weak {
   font-weight: none;
 }
+
+@media only screen and (max-device-width: 480px) {
+  .standings-table {
+    td, th {
+      font-size: 11px;
+    }
+  }
+}
