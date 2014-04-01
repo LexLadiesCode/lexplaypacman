@@ -1,11 +1,14 @@
 Lexplaypacman::Application.routes.draw do
   get "about" => "pages#about"
+
   resources :standings, only: [:show, :new, :index, :create] do
     collection do
       get :top
     end
   end
-  resources :players
+
+  resources :players, only: [:show, :new, :index, :create]
+
   resources :locations
 
   # The priority is based upon order of creation: first created -> highest priority.
