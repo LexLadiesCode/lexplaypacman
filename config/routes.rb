@@ -1,6 +1,10 @@
 Lexplaypacman::Application.routes.draw do
   get "about" => "pages#about"
-  resources :standings
+  resources :standings, only: [:show, :new, :index, :create] do
+    collection do
+      get :top
+    end
+  end
   resources :players
   resources :locations
 
