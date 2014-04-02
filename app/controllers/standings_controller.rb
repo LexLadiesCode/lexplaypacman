@@ -1,5 +1,6 @@
 class StandingsController < ApplicationController
   before_action :set_standing, only: [:show]
+  helper_method :sort_column, :sort_direction, :sort_time
 
   def top
     @standings = Standing.all.order("score DESC").limit(10)
@@ -7,22 +8,16 @@ class StandingsController < ApplicationController
 
   # GET /standings
   # GET /standings.json
-  helper_method :sort_column, :sort_direction, :sort_time
   def index
+    @standings = Standing.with_locations
     if sort_column == 'initials'
-      @standings = Standing.with_locations.
-                            order("lower(initials) " + sort_direction).
-                            where('standings.created_at > ?', sort_time)
+      @standings = @standings.order("LOWER(initials) " + sort_direction)
     elsif sort_column == 'location_id'
-      @standings = Standing.with_locations.
-                            order("locations.name " + sort_direction).
-                            where('standings.created_at > ?', sort_time)
+      @standings = @standings.order("locations.name " + sort_direction)
     else
-      @standings = Standing.with_locations.
-                            order(sort_column + " " + sort_direction).
-                            where('standings.created_at > ?', sort_time)
+      @standings = @standings.order(sort_column + " " + sort_direction)
     end
-
+    @standings = @standings.where('standings.created_at > ?', sort_time)
   end
 
   # GET /standings/1
@@ -40,20 +35,25 @@ class StandingsController < ApplicationController
   # POST /standings.json
   def create
     @standing = Standing.new(standing_params)
-    photo_id = Flickr.upload(params[:standing][:file], title: @standing.initials)
-    photo = Flickr.photos.find(photo_id).get_info!
-    photo.get_sizes!
-    @standing.image_URL = photo.largest.source_url
+    file = params[:standing][:file]
+    if file.present?
+      photo_id = Flickr.upload(file, title: @standing.initials)
+      photo = Flickr.photos.find(photo_id).get_info!
+      photo.get_sizes!
+      @standing.image_URL = photo.largest.source_url
+    end
     respond_to do |format|
       if @standing.save
-        format.html { redirect_to @standing, notice: 'Standing was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @standing }
-      else
-        format.html {
-          @standing.build_player unless @standing.player
-          render action: 'new'
+        format.html { redirect_to @standing, notice: 'Saved your high score!' }
+        format.json {
+          render action: 'show', status: :created, location: @standing
         }
-        format.json { render json: @standing.errors, status: :unprocessable_entity }
+      else
+        @standing.build_player unless @standing.player
+        format.html { render action: 'new' }
+        format.json {
+          render json: @standing.errors, status: :unprocessable_entity
+        }
       end
     end
   end
@@ -65,9 +65,8 @@ class StandingsController < ApplicationController
     @standing = Standing.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def standing_params
-    params.require(:standing).permit(:initials, :score, :location_id,
+    params.require(:standing).permit(:initials, :score, :location_id, :file,
                                      player_attributes: [:email, :twitter])
   end
 
