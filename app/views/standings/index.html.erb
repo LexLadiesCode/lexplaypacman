@@ -9,7 +9,7 @@
   </h1>
 </div>
 
-<p>List by: 
+<p>List by:
   <%= time "All time", 100.years.ago %> |
   <%= time "Week", 7.days.ago %> |
   <%= time "Today", 0.days.ago %>
@@ -29,14 +29,14 @@
   <tbody>
     <% @standings.each do |standing| %>
       <tr>
-        <td><%= standing.initials %></td>
+        <td><%= link_to standing.initials, standing_path(standing) %></td>
         <td><%= standing.score %></td>
         <td>
-          <img src="http://www.refugezero.com/src/image/screens/pacman-screen1.jpg" width="100" height="100">
+          <%= image_tag standing.image_URL, height: '100px' %>
         </td>
         <td>
           <% if standing.location %>
-            <%= link_to standing.location.name, locations_path %>
+            <%= link_to standing.location.name, locations_path(:anchor => standing.location.slug) %>
           <% else %>
             none
           <% end %>

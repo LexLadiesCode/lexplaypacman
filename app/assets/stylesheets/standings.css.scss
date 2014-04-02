@@ -18,6 +18,14 @@
 
   a {
     color: #444;
+    display: block;
+
+    .fa-twitter {
+      vertical-align: top;
+      margin-top: -2px;
+      line-height: 26px;
+      padding-right: 0.3em;
+    }
   }
 
   .fa.fa-map-marker {
@@ -32,4 +40,12 @@
 
 .weak {
   font-weight: none;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .standings-table {
+    td, th {
+      font-size: 11px;
+    }
+  }
 }

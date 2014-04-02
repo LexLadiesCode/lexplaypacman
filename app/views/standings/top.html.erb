@@ -31,8 +31,7 @@
                 </td>
                 <td>
                   <% if location=standing.location %>
-                    <%# TODO: link to individual location page %>
-                    <%= link_to locations_path do %>
+                    <%= link_to locations_path(:anchor => location.slug) do %>
                       <i class="fa fa-map-marker" title="<%= location.name %>" data-toggle="tooltip"></i>
                     <% end %>
                   <% end %>
