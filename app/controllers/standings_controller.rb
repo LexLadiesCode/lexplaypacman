@@ -35,7 +35,7 @@ class StandingsController < ApplicationController
   # POST /standings.json
   def create
     @standing = Standing.new(standing_params)
-    file = params[:standing][:file]
+    file = params[:file]
     if file.present?
       photo_id = Flickr.upload(file, title: @standing.initials)
       photo = Flickr.photos.find(photo_id).get_info!
