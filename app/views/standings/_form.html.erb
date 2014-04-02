@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-6">
-    <%= form_for(@standing, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
+    <%= form_for(@standing, html: {class: 'form-horizontal', role: 'form', multipart: true}) do |f| %>
       <% if @standing.errors.any? %>
         <div class="alert alert-danger" id="error_explanation">
           <ul class="list-unstyled">
