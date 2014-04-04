@@ -1,5 +1,5 @@
 class Standing < ActiveRecord::Base
-	BAD_WORDS = %w(ass cck cnt coc cok coq dck dik fag fck fuc fuk fuq kkk kok nig poo tit).freeze
+	BAD_WORDS = %w(ass cck cnt coc cok coq dck dik dix fag fck fuc fuk fuq kkk kok nig poo tit).freeze
 
   belongs_to :location
   belongs_to :player
