@@ -1,10 +1,39 @@
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-14">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title">
           <i class="fa fa-trophy"></i>
-          High Scores
+          WIN, WIN, WIN!
+        </h2>
+      </div>
+      <div class="panel-body">
+        <center>
+          TWO WINNERS will be crowned May 1st: the player with the highest score; and a random player chosen from ALL the scores. Submitting more scores increases your chances to WIN! Winners will get crazy awesome trophies, and the glory of being crowned the <br>
+          <b>Pac-Man King(s)/Queen(s) of Lexington!</b>
+        </center>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-xs-6 text-left">
+            <%= link_to new_standing_path do %>
+              <i class="glyphicon glyphicon-plus"></i>
+              Submit your score now
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-md-5">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          <i class="glyphicon glyphicon-star"></i>
+          Top 10 High Scores
         </h2>
       </div>
       <div class="panel-body">
@@ -82,7 +111,7 @@
           <div class="col-xs-6 text-right">
             <%= mail_to "ewarner@lexpublib.org", subject: "You're missing a Pac-Man or Ms. Pac-Man machine!" do %>
               <i class="glyphicon glyphicon-question-sign"></i>
-              Are we missing a location? Let us know!
+              Are we missing a location?
             <% end %>
           </div>
         </div>
