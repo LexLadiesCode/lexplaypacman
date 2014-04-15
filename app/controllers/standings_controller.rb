@@ -1,3 +1,5 @@
+require 'thread'
+
 class StandingsController < ApplicationController
   before_action :set_standing, only: [:show]
   helper_method :sort_column, :sort_direction, :sort_time
@@ -31,16 +33,25 @@ class StandingsController < ApplicationController
     @standing.build_player
   end
 
+  def upload_to_flickr(file, initials)
+    photo_id = Flickr.upload(file, title: initials)
+    photo = Flickr.photos.find(photo_id).get_info!
+    photo.get_sizes!
+    return photo.largest.source_url
+  end
+
   # POST /standings
   # POST /standings.json
   def create
     @standing = Standing.new(standing_params)
     file = params[:file]
     if file.present?
-      photo_id = Flickr.upload(file, title: @standing.initials)
-      photo = Flickr.photos.find(photo_id).get_info!
-      photo.get_sizes!
-      @standing.image_URL = photo.largest.source_url
+      begin
+        photo_url = upload_to_flickr(file, @standing.initials)
+      rescue
+        photo_url = "" #set to empty string for now. It will bounce back to the user and they'll be prompted to submit again.
+      end
+      @standing.image_URL = photo_url
     end
     respond_to do |format|
       if @standing.save
