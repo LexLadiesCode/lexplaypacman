@@ -53,7 +53,7 @@ puts 'Seeding locations'
    latitude: 38.07209747, longitude: -84.47553659, phone: '(859) 293-1415',
    website: 'http://www.commonwealthlaundromat.com/', kid_friendly: true,
    hours: '7 Days A Week: 7:00am-11:00pm'},
-  {name: 'Cinemark Woodhill Movies 10', slug: 'CINEM', street_address: '425 Codell Drive',
+  {name: 'Cinemark Woodhill Movies 10', slug: 'WOODH', street_address: '425 Codell Drive',
    city: 'Lexington', state: 'Kentucky', postal_code: '40509',
    latitude: 38.02105517, longitude: -84.45199698, phone: '(859) 269-2207',
    website: 'http://www.cinemark.com/theatre-detail.aspx?node_id=1500', kid_friendly: true},
@@ -115,7 +115,11 @@ puts 'Seeding locations'
     hours: 'Monday - Thursday: 9:00am - 9:00pm <br>
             Friday: 9:00am - 6:00pm <br>
             Saturday: 9:00am - 5:00pm <br>
-            Sunday: 1:00pm - 5:00pm'  }
+            Sunday: 1:00pm - 5:00pm'  },
+  {name: 'Cinemark Fayette Mall', slug: 'FAYET', street_address: '3800 Mall Road',
+  city: 'Lexington', state: 'Kentucky', postal_code: '40503',
+  latitude: 37.984408, longitude: -84.529924, phone: '(859) 971-0718',
+  website: 'http://www.cinemark.com/theatre-detail.aspx?node_id=1608', kid_friendly: true}
    ].each do |data|
   update_or_create_record Location, :name, data
 end

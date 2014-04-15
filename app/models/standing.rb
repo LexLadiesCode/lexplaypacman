@@ -1,14 +1,19 @@
 class Standing < ActiveRecord::Base
-	BAD_WORDS = %w(ass cck cnt coc cok coq dck dik fag fck fuc fuk fuq kkk kok nig poo tit).freeze
+	BAD_WORDS = %w(ass cck cnt coc cok coq dck dik dix fag fck fuc fuk fuq kkk kok nig poo tit).freeze
+
   belongs_to :location
   belongs_to :player
   accepts_nested_attributes_for :player
 
   validates_presence_of :initials
-  validates_exclusion_of :initials, in: BAD_WORDS, message: "cannot be rude words"
-  validates_format_of :initials, with: /\A[a-zA-Z]{3}\z/, message: 'must be three letters'
+  validates_exclusion_of :initials, in: BAD_WORDS,
+                                    message: "cannot be rude words"
+  validates_format_of :initials, with: /\A[a-zA-Z]{3}\z/,
+                                 message: 'must be three letters'
   validates_presence_of :score
-  validates_numericality_of :score, less_than_or_equal_to: 3333360, greater_than_or_equal_to: 0
+  validates :image_URL, presence: true
+  validates_numericality_of :score, less_than_or_equal_to: 3333360,
+                                    greater_than_or_equal_to: 0
 
   before_save :capitalize_initials
 

@@ -29,10 +29,10 @@
   <tbody>
     <% @standings.each do |standing| %>
       <tr>
-        <td><%= standing.initials %></td>
+        <td><%= link_to standing.initials, standing_path(standing) %></td>
         <td><%= standing.score %></td>
         <td>
-          <img src="http://www.refugezero.com/src/image/screens/pacman-screen1.jpg" width="100" height="100">
+          <%= image_tag standing.image_URL, height: '100px' %>
         </td>
         <td>
           <% if standing.location %>

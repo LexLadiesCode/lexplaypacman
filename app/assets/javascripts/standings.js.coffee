@@ -1,3 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# Disable the submit button after the form has been submitted to prevent
+# accidental double-posting
+#$('form#new_standing').submit ->
+#  $('input.btn-primary', $(this)).attr 'disabled', 'disabled'

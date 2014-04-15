@@ -44,12 +44,25 @@
           </p>
         </div>
         <div class="col-sm-6">
-        <a href="https://maps.google.com/maps?z=15&q=<%= location.latitude %>+<%= location.longitude %>">
-          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= location.latitude %>,<%= location.longitude %>&markers=color:red|<%= location.latitude %>,<%= location.longitude %>&zoom=15&size=250x250&sensor=false&key=AIzaSyDIxX5aWsdZyTsowPE-iD7HqwQ3LjeX3OQ">
-        </a>
+          <a href="https://maps.google.com/maps?z=15&q=<%= location.latitude %>+<%= location.longitude %>">
+            <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= location.latitude %>,<%= location.longitude %>&markers=color:red|<%= location.latitude %>,<%= location.longitude %>&zoom=15&size=250x250&sensor=false&key=AIzaSyDIxX5aWsdZyTsowPE-iD7HqwQ3LjeX3OQ">
+          </a>
         </div>
       </div>
     </div>
     </div>
   </div>
   <% end %>
+
+
+ <script type="text/JavaScript">
+    $(document).ready(function() {
+      var pathname = window.location.pathname;
+      var  index = pathname.indexOf("#");
+      var end = pathname.length-1;
+      if (index > 0 && index != end) {
+        var slug = pathname.substring(index, end);
+        $(slug).collapse("open");
+      };
+    });
+    </script>
