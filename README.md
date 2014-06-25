@@ -6,4 +6,4 @@ First time coding project for LexLadiesCode, an all-ladies coding club in Lexing
 
 ## Screenshot
 
-![](http://github.com/eliriveire/lexplaypacman/raw/master/screenshot.png)
+![](https://raw.githubusercontent.com/LexLadiesCode/lexplaypacman/master/screenshot.png)
